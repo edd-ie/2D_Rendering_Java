@@ -77,7 +77,6 @@ public class Window extends JPanel implements Runnable{
                 e.printStackTrace();
             }
 
-
         }
     }
 

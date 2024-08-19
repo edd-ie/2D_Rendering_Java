@@ -52,29 +52,28 @@ public class Window extends JPanel implements Runnable{
      */
     @Override
     public void run() {
-        double drawInterval = (double) 1000000000 /FPS; // 0.016666 seconds
-        double nextUpdateTime = System.nanoTime() - drawInterval;
-        double countdown;
+        double intervals = (double) 1000000000 /FPS, countdown=0;
+        long lastUpdateTime = System.nanoTime(), timer = 0, currentTime,diff;
         int fpsCounter = 0;
 
         while (gameThread != null) {
-            update();
-            repaint();
+            currentTime = System.nanoTime();
+            diff = (currentTime - lastUpdateTime);
+            timer += diff;
+            countdown +=  (diff/intervals);
+            lastUpdateTime = currentTime;
 
-             // measures time from last update
-            try {
-                countdown = (nextUpdateTime - System.nanoTime())/1000000;
-
-                if (countdown <= 0) {
-                    countdown = 0;
-                }
-
-                Thread.sleep((long)countdown);
-                nextUpdateTime += drawInterval;
-
+            if (countdown >= 1) { // Update game at 60 FPS
+                update();
+                repaint();
+                fpsCounter++;
+                countdown--;
             }
-            catch (InterruptedException e) {
-                e.printStackTrace();
+
+            if(timer >= 1000000000) {
+                System.out.println("FPS: " + fpsCounter);
+                fpsCounter = 0;
+                timer  = 0;
             }
 
         }

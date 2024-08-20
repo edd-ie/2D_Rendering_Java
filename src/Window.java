@@ -30,7 +30,7 @@ public class Window extends JPanel implements Runnable{
         this.addKeyListener(event);
         this.setFocusable(true); // Panel can focus on key presses
 
-        player = new Player(event, this);
+        player = new Player(event);
     }
 
     public void setAspectRatio(int x, int y) {

@@ -1,13 +1,13 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Player extends Character{
     public EventListener keys;
-    public Window gamePanel;
 
-    public Player(EventListener keyHandler, Window panel) {
-        gamePanel = panel;
+    public Player(EventListener keyHandler) {
         keys = keyHandler;
         this.init(100,100, 4);
         getPlayerImage();
@@ -23,14 +23,14 @@ public class Player extends Character{
     public void getPlayerImage(){
         try {
             //code to get player image
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up1"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up2"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down1"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down2"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left1"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left2"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right1"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right2"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right2.png"));
         }
         catch (IOException e) {
             //code to handle exception
@@ -39,26 +39,65 @@ public class Player extends Character{
     }
 
     public void update(){
-        if(keys.up && yPos > speed) {
-            yPos -= speed;
-            direction = "up";
+        if(keys.right|| keys.down || keys.left || keys.up){
+            if(keys.up && yPos > speed) {
+                yPos -= speed;
+                direction = "up";
+            }
+            else if(keys.down && yPos < (Window.dimensions[1] - Window.tileSize - speed)) {
+                yPos += speed;
+                direction = "down";
+            }
+            else if(keys.left && xPos > speed) {
+                xPos -= speed;
+                direction = "left";
+            }
+            else if(keys.right && xPos < (Window.dimensions[0] - Window.tileSize - speed)) {
+                xPos += speed;
+                direction = "right";
+            }
+
+            spriteCounter++;
+            if(spriteCounter > 12){ //changes player image every 12 fps
+                if(spriteNum == 1) spriteNum = 2;
+                else spriteNum = 1;
+
+                spriteCounter = 0;
+            }
         }
-        else if(keys.down && yPos < (Window.dimensions[1] - Window.tileSize - speed)) {
-            yPos += speed;
-            direction = "down";
-        }
-        else if(keys.left && xPos > speed) {
-            xPos -= speed;
-            direction = "left";
-        }
-        else if(keys.right && xPos < (Window.dimensions[0] - Window.tileSize - speed)) {
-            xPos += speed;
-            direction = "right";
-        }
+        else spriteNum = 1;
     }
 
     public void draw(Graphics2D g2d){
-        g2d.setColor(Color.white);
-        g2d.fillRect(xPos, yPos, Window.tileSize, Window.tileSize);
+        BufferedImage image = null;
+
+        switch (direction) {
+            case "up" -> {
+                switch (spriteNum){
+                    case 1 -> image = up1;
+                    case 2 -> image = up2;
+                }
+            }
+            case "down" -> {
+                switch (spriteNum){
+                    case 1 -> image = down1;
+                    case 2 -> image = down2;
+                }
+            }
+            case "left" -> {
+                switch (spriteNum){
+                    case 1 -> image = left1;
+                    case 2 -> image = left2;
+                }
+            }
+            case "right" -> {
+                switch (spriteNum){
+                    case 1 -> image = right1;
+                    case 2 -> image = right2;
+                }
+            }
+        }
+
+        g2d.drawImage(image, xPos, yPos, Window.tileSize, Window.tileSize, null);
     }
 }

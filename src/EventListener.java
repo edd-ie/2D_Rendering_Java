@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class EventListener implements KeyListener {
-    public static boolean up, down, left, right;
+    public boolean up, down, left, right;
 
     /**
      * Invoked when a key has been typed.

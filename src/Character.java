@@ -1,14 +1,9 @@
+import java.awt.image.BufferedImage;
+
 public class Character {
-    public int xPos;
-    public int yPos;
-    public int speed;
-
-
-    public Character(int xPos, int yPos, int speed) {
-        this.xPos = xPos;
-        this.yPos = yPos;
-        this.speed = speed;
-    }
+    public int xPos, yPos, speed;
+    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+    public String direction;
 
     public void move(int x, int y) {
         xPos += x;

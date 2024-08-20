@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RayCasting.iml" filepath="$PROJECT_DIR$/RayCasting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GameDev2D.iml" filepath="$PROJECT_DIR$/GameDev2D.iml" />
     </modules>
   </component>
 </project>

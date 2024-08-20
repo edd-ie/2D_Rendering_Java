@@ -7,7 +7,7 @@ public class Window extends JPanel implements Runnable{
     //Screen settings
     private static final int tile = 16;
     private static final int scale = 3;
-    private static final int tileSize = tile * scale;
+    public static final int tileSize = tile * scale;
     public static int[] aspectRatio = {16, 12};
     public static int[] dimensions = {tileSize * aspectRatio[0], tileSize * aspectRatio[1]};
 
@@ -20,7 +20,7 @@ public class Window extends JPanel implements Runnable{
     public EventListener event = new EventListener();
 
     // Characters
-    Character player;
+    public Player player;
 
     public Window() {
         this.setPreferredSize(new Dimension(dimensions[0], dimensions[1]));
@@ -30,7 +30,7 @@ public class Window extends JPanel implements Runnable{
         this.addKeyListener(event);
         this.setFocusable(true); // Panel can focus on key presses
 
-        player = new Character(100, 100, 4);
+        player = new Player(event, this);
     }
 
     public void setAspectRatio(int x, int y) {
@@ -66,29 +66,23 @@ public class Window extends JPanel implements Runnable{
             if (countdown >= 1) { // Update game at 60 FPS
                 update();
                 repaint();
-                fpsCounter++;
-                countdown--;
+                countdown = 0;
+
+//                fpsCounter++;
             }
 
-            if(timer >= 1000000000) {
-                System.out.println("FPS: " + fpsCounter);
-                fpsCounter = 0;
-                timer  = 0;
-            }
+//            if(timer >= 1000000000) { // Display fps
+//                System.out.println("FPS: " + fpsCounter);
+//                fpsCounter = 0;
+//                timer  = 0;
+//            }
 
         }
     }
 
     // Update screen with new frames
     public void update() {
-        if(event.up && player.yPos > player.speed)
-            player.yPos -= player.speed;
-        else if(event.down && player.yPos < (dimensions[1] - tileSize - player.speed))
-            player.yPos += player.speed;
-        else if(event.left && player.xPos > player.speed)
-            player.xPos -= player.speed;
-        else if(event.right && player.xPos < (dimensions[0] - tileSize - player.speed))
-            player.xPos += player.speed;
+        player.update();
     }
 
     public void paintComponent(Graphics fx) {
@@ -96,8 +90,7 @@ public class Window extends JPanel implements Runnable{
         // Using graphics2D library to draw on the screen
         Graphics2D gfx = (Graphics2D) fx;
 
-        gfx.setColor(Color.white);
-        gfx.fillRect(player.xPos, player.yPos, tileSize, tileSize);
+        player.draw(gfx);
 
         // Disposes of this graphics context and releases any system resources that it is using
         gfx.dispose();

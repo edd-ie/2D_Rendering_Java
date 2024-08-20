@@ -12,7 +12,7 @@ ahora vamos a dibujar algunos azulejos de fondo
 
 7
 00:00:16,240 --> 00:00:27,599
-por cierto, ya no necesitamos estas variables ya que nos encargamos del movimiento del jugador en la clase Player
+por cierto, ya no necesitamos estas variables ya que nos encargamos del movimiento del jugador en la clase character.Player
 
 10
 00:00:25,039 --> 00:00:27,599
@@ -48,7 +48,7 @@ y luego desde esta carpeta fuente vamos a crear otro paquete
 
 27
 00:01:17,680 --> 00:01:27,560
-y dentro de este paquete tile, crearemos una clase llamada Tile
+y dentro de este paquete tile, crearemos una clase llamada tile.Tile
 
 31
 00:01:28,560 --> 00:01:37,600
@@ -88,11 +88,11 @@ En esta clase, primero vamos a utilizar GamePanel
 
 52
 00:02:24,239 --> 00:02:30,000
-y también esta clase Tile
+y también esta clase tile.Tile
 
 55
 00:02:30,000 --> 00:02:37,840
-creamos este Tile como un callejón y lo nombramos "tile"
+creamos este tile.Tile como un callejón y lo nombramos "tile"
 
 57
 00:02:38,319 --> 00:02:44,319
@@ -108,7 +108,7 @@ y vamos a obtener GamePanel como "gp"
 
 64
 00:02:58,800 --> 00:03:06,080
-también vamos a establecer el tamaño de este Tile array
+también vamos a establecer el tamaño de este tile.Tile array
 
 67
 00:03:06,080 --> 00:03:11,360
@@ -140,7 +140,7 @@ y vamos a llamar a este método desde este constructor
 
 81
 00:03:48,720 --> 00:03:54,560
-similar a la clase Player
+similar a la clase character.Player
 
 82
 00:03:51,920 --> 00:04:01,840
@@ -152,7 +152,7 @@ así que de nuevo, prueba y captura
 
 88
 00:04:14,560 --> 00:04:22,400
-y aquí vamos a instanciar este array Tile
+y aquí vamos a instanciar este array tile.Tile
 
 101
 00:04:46,880 --> 00:04:53,280
@@ -164,7 +164,7 @@ así que la ruta del archivo será... ya que estos están dentro de este paquete
 
 108
 00:05:03,520 --> 00:05:12,240
-creamos este BufferedImage dentro de esta clase Tile
+creamos este BufferedImage dentro de esta clase tile.Tile
 
 111
 00:05:10,720 --> 00:05:20,240
@@ -776,7 +776,7 @@ luego vamos a dibujar una imagen
 
 563
 00:24:02,799 --> 00:24:12,720
-así que esto va a funcionar como un índice de esta matriz Tile
+así que esto va a funcionar como un índice de esta matriz tile.Tile
 
 569
 00:24:15,600 --> 00:24:23,360

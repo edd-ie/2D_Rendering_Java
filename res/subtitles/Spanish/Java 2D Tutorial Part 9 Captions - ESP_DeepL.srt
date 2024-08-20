@@ -508,7 +508,7 @@ por ejemplo
 
 328
 00:14:40,160 --> 00:14:47,680
-en esta clase Player, podemos reproducir un efecto de sonido cuando obtengamos esta tecla
+en esta clase character.Player, podemos reproducir un efecto de sonido cuando obtengamos esta tecla
 
 331
 00:14:47,839 --> 00:14:58,639

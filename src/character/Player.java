@@ -1,3 +1,8 @@
+package character;
+
+import main.EventListener;
+import main.Window;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,8 +28,8 @@ public class Player extends Character{
     public void getPlayerImage(){
         try {
             //code to get player image
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/up2.png"));
+            up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/up1.png")));
+            up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/up2.png")));
             down1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down1.png"));
             down2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down2.png"));
             left1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left1.png"));
@@ -44,7 +49,7 @@ public class Player extends Character{
                 yPos -= speed;
                 direction = "up";
             }
-            else if(keys.down && yPos < (Window.dimensions[1] - Window.tileSize - speed)) {
+            else if(keys.down && yPos < (main.Window.dimensions[1] - Window.tileSize - speed)) {
                 yPos += speed;
                 direction = "down";
             }
@@ -52,7 +57,7 @@ public class Player extends Character{
                 xPos -= speed;
                 direction = "left";
             }
-            else if(keys.right && xPos < (Window.dimensions[0] - Window.tileSize - speed)) {
+            else if(keys.right && xPos < (main.Window.dimensions[0] - main.Window.tileSize - speed)) {
                 xPos += speed;
                 direction = "right";
             }
@@ -98,6 +103,6 @@ public class Player extends Character{
             }
         }
 
-        g2d.drawImage(image, xPos, yPos, Window.tileSize, Window.tileSize, null);
+        g2d.drawImage(image, xPos, yPos, main.Window.tileSize, main.Window.tileSize, null);
     }
 }

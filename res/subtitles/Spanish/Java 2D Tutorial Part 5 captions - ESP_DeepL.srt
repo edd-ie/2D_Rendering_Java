@@ -72,7 +72,7 @@ y antes de cargar y dibujar este archivo de mapa del mundo, tenemos que hacer al
 
 49
 00:02:00,719 --> 00:02:07,280
-lo que vamos a hacer es, editar el código en la clase Player
+lo que vamos a hacer es, editar el código en la clase character.Player
 
 50
 00:02:03,920 --> 00:02:13,200
@@ -136,7 +136,7 @@ y entender esta diferencia será la clave para entender la mecánica de la cáma
 
 84
 00:03:25,440 --> 00:03:33,360
-ok entonces vamos a esta clase Player
+ok entonces vamos a esta clase character.Player
 
 86
 00:03:30,640 --> 00:03:36,879
@@ -168,7 +168,7 @@ porque vamos a utilizar un tipo diferente de x e y aquí
 
 107
 00:04:19,919 --> 00:04:31,199
-así que en esta clase Player, renombra esta x e y en el setDefaultValues
+así que en esta clase character.Player, renombra esta x e y en el setDefaultValues
 
 109
 00:04:26,880 --> 00:04:31,199
@@ -212,7 +212,7 @@ esta va a ser la posición inicial
 
 136
 00:05:33,120 --> 00:05:40,639
-entonces en esta clase Player, creamos otras variables x e y
+entonces en esta clase character.Player, creamos otras variables x e y
 
 146
 00:05:54,160 --> 00:06:02,960

@@ -1,3 +1,8 @@
+package main;
+
+import character.Player;
+import tile.TileManger;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
@@ -5,14 +10,14 @@ import java.awt.Graphics2D;
 
 public class Window extends JPanel implements Runnable{
     //Screen settings
-    private static final int tile = 16;
+    private static final int tile = 12;
     private static final int scale = 3;
     public static final int tileSize = tile * scale;
-    public static int[] aspectRatio = {16, 12};
+    public static int[] aspectRatio = {24, 18};
     public static int[] dimensions = {tileSize * aspectRatio[0], tileSize * aspectRatio[1]};
 
 
-    //Game runtime
+    //main.Game runtime
     public static Thread gameThread;
     public static final int FPS = 60;
 
@@ -21,6 +26,9 @@ public class Window extends JPanel implements Runnable{
 
     // Characters
     public Player player;
+
+    // Background
+    public TileManger tileManger = new TileManger();
 
     public Window() {
         this.setPreferredSize(new Dimension(dimensions[0], dimensions[1]));
@@ -90,7 +98,10 @@ public class Window extends JPanel implements Runnable{
         // Using graphics2D library to draw on the screen
         Graphics2D gfx = (Graphics2D) fx;
 
+        // Draw background first, then characters on top of it
+        tileManger.draw(gfx);
         player.draw(gfx);
+
 
         // Disposes of this graphics context and releases any system resources that it is using
         gfx.dispose();

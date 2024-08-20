@@ -8,7 +8,7 @@ Vous pouvez voir que le programme maintient 60 fps, donc ça marche bien.
 
 5
 00:00:14,400 --> 00:00:21,760
-ok maintenant nous allons créer la classe Player
+ok maintenant nous allons créer la classe character.Player
 
 7
 00:00:18,160 --> 00:00:21,760
@@ -36,7 +36,7 @@ créez une classe appelée Entity
 
 16
 00:00:43,440 --> 00:00:54,399
-Cette classe sera la classe parente de la classe Player et de toutes les autres classes de personnages.
+Cette classe sera la classe parente de la classe character.Player et de toutes les autres classes de personnages.
 
 19
 00:00:52,079 --> 00:00:58,399
@@ -48,11 +48,11 @@ OK, c'est tout pour le moment
 
 27
 00:01:10,720 --> 00:01:15,600
-maintenant, créons la classe Player
+maintenant, créons la classe character.Player
 
 29
 00:01:14,400 --> 00:01:22,240
-donc à l'intérieur de ce paquetage d'entités, créez Player
+donc à l'intérieur de ce paquetage d'entités, créez character.Player
 
 33
 00:01:22,960 --> 00:01:35,200
@@ -84,7 +84,7 @@ et on retourne à cette classe GamePanel
 
 54
 00:02:19,520 --> 00:02:26,400
-nous allons instancier cette classe Player
+nous allons instancier cette classe character.Player
 
 59
 00:02:29,680 --> 00:02:37,239
@@ -92,7 +92,7 @@ et nous allons passer cette classe GamePanel et KeyHandler
 
 62
 00:02:40,800 --> 00:02:49,360
-donc maintenant nous pouvons utiliser cette classe GamePanel et KeyHandler dans cette classe Player
+donc maintenant nous pouvons utiliser cette classe GamePanel et KeyHandler dans cette classe character.Player
 
 64
 00:02:47,760 --> 00:02:53,760
@@ -148,7 +148,7 @@ vous pouvez le faire mais ce serait mieux si nous pouvions le gérer d'une mani�
 
 101
 00:04:11,920 --> 00:04:25,440
-donc nous créons cette méthode de mise à jour dans la classe Player aussi
+donc nous créons cette méthode de mise à jour dans la classe character.Player aussi
 
 106
 00:04:22,639 --> 00:04:29,400
@@ -176,7 +176,7 @@ et ici, on tape juste
 
 123
 00:05:06,880 --> 00:05:13,520
-Nous appelons donc cette méthode à l'intérieur de la classe Player.
+Nous appelons donc cette méthode à l'intérieur de la classe character.Player.
 
 128
 00:05:19,039 --> 00:05:25,680
@@ -192,7 +192,7 @@ Nous recevons donc ce Graphics2D ici
 
 136
 00:05:36,639 --> 00:05:44,320
-donc maintenant nous pouvons utiliser ce g2 à l'intérieur de cette classe Player également
+donc maintenant nous pouvons utiliser ce g2 à l'intérieur de cette classe character.Player également
 
 138
 00:05:41,520 --> 00:05:49,840
@@ -216,7 +216,7 @@ OK, je pense que nous devons rendre cette classe publique
 
 156
 00:06:35,759 --> 00:06:43,520
-ceci doit être public, sinon la classe Player ne pourra pas y accéder
+ceci doit être public, sinon la classe character.Player ne pourra pas y accéder
 
 159
 00:06:43,520 --> 00:06:49,039
@@ -328,7 +328,7 @@ et importez BufferedImage
 
 227
 00:09:34,480 --> 00:09:39,600
-OK, passons à la classe Player
+OK, passons à la classe character.Player
 
 228
 00:09:37,200 --> 00:09:40,560

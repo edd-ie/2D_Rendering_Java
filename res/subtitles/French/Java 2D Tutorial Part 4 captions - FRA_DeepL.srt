@@ -12,7 +12,7 @@ Maintenant, dessinons quelques tuiles d'arrière-plan
 
 7
 00:00:16,240 --> 00:00:27,599
-Au fait, nous n'avons plus besoin de ces variables puisque nous nous sommes occupés du mouvement du joueur dans la classe Player.
+Au fait, nous n'avons plus besoin de ces variables puisque nous nous sommes occupés du mouvement du joueur dans la classe character.Player.
 
 10
 00:00:25,039 --> 00:00:27,599
@@ -48,7 +48,7 @@ et ensuite, à partir de ce dossier source, nous allons créer un autre paquetag
 
 27
 00:01:17,680 --> 00:01:27,560
-et à l'intérieur de ce paquetage, créer une classe appelée Tile
+et à l'intérieur de ce paquetage, créer une classe appelée tile.Tile
 
 31
 00:01:28,560 --> 00:01:37,600
@@ -88,7 +88,7 @@ dans cette classe, nous allons d'abord utiliser GamePanel
 
 52
 00:02:24,239 --> 00:02:30,000
-et aussi cette classe Tile
+et aussi cette classe tile.Tile
 
 55
 00:02:30,000 --> 00:02:37,840
@@ -140,7 +140,7 @@ et nous allons appeler cette méthode depuis ce constructeur
 
 81
 00:03:48,720 --> 00:03:54,560
-un peu comme la classe Player
+un peu comme la classe character.Player
 
 82
 00:03:51,920 --> 00:04:01,840
@@ -152,7 +152,7 @@ donc encore une fois, essayez et attrapez
 
 88
 00:04:14,560 --> 00:04:22,400
-et ici nous allons instancier ce tableau Tile
+et ici nous allons instancier ce tableau tile.Tile
 
 101
 00:04:46,880 --> 00:04:53,280
@@ -164,7 +164,7 @@ donc le chemin du fichier sera... puisque ceux-ci sont dans ce paquet de tuiles 
 
 108
 00:05:03,520 --> 00:05:12,240
-Nous avons donc créé cette BufferedImage à l'intérieur de la classe Tile.
+Nous avons donc créé cette BufferedImage à l'intérieur de la classe tile.Tile.
 
 111
 00:05:10,720 --> 00:05:20,240
@@ -776,7 +776,7 @@ puis nous allons dessiner une image
 
 563
 00:24:02,799 --> 00:24:12,720
-donc cela va fonctionner comme un index de ce tableau Tile
+donc cela va fonctionner comme un index de ce tableau tile.Tile
 
 569
 00:24:15,600 --> 00:24:23,360

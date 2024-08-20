@@ -1,3 +1,5 @@
+package character;
+
 import java.awt.image.BufferedImage;
 
 public class Character {

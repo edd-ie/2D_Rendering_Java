@@ -35,9 +35,10 @@ public class TileManger {
 
     public void draw(Graphics2D g2) {
         // Implementation to draw tiles on the game panel
+        Scanner sc = null, token = null;
         try{
-            Scanner sc = new Scanner(new File("res/Map/test.txt"));
-            Scanner token;
+            sc = new Scanner(new File("res/Map/test.txt"));
+
             int x=0,  y=0;
             while (sc.hasNext()){
                 String line = sc.nextLine();
@@ -54,6 +55,10 @@ public class TileManger {
         }
         catch (FileNotFoundException e){
             e.printStackTrace();
+        }
+        finally {
+            if (sc != null) sc.close();
+            if (token != null) token.close();
         }
 //
 //        g2.drawImage(tiles[0].image, 0, 0, Window.tileSize, Window.tileSize, null);

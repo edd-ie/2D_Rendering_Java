@@ -30,12 +30,12 @@ public class Player extends Character{
             //code to get player image
             up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/up1.png")));
             up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/up2.png")));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/walk/right2.png"));
+            down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/down1.png")));
+            down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/down2.png")));
+            left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/left1.png")));
+            left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/left2.png")));
+            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/right1.png")));
+            right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/walk/right2.png")));
         }
         catch (IOException e) {
             //code to handle exception

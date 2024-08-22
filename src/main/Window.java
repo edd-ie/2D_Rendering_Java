@@ -25,10 +25,14 @@ public class Window extends JPanel implements Runnable{
     public EventListener event = new EventListener();
 
     // Characters
-    public Player player;
+    public static Player player;
 
-    // Background
+    // World settings
     public TileManger tileManger = new TileManger();
+    public static final int maxWorldCol = 50,
+            maxWorldRow = 50;
+    public static final int worldWidth = tileSize * maxWorldCol,
+            worldHeight = tileSize * maxWorldRow;
 
     public Window() {
         this.setPreferredSize(new Dimension(dimensions[0], dimensions[1]));
@@ -38,7 +42,7 @@ public class Window extends JPanel implements Runnable{
         this.addKeyListener(event);
         this.setFocusable(true); // Panel can focus on key presses
 
-        player = new Player(event);
+        player = new Player(event, Window.tileSize*23,Window.tileSize*21);
     }
 
     public void setAspectRatio(int x, int y) {

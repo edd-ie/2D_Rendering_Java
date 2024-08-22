@@ -16,7 +16,7 @@ public class TileManger {
 
     public TileManger() {
         tiles = new Tile[10];
-        map = new int[Window.aspectRatio[1]][Window.aspectRatio[0]];
+        map = new int[Window.maxWorldRow][Window.maxWorldCol];
         getTileImage();
         loadTileMap("test.txt");
     }
@@ -24,7 +24,7 @@ public class TileManger {
     private void getTileImage() {
         // Implementation to load tile images from resources
         try{
-            String[] files = {"grass01", "wall", "water01", "earth", "tree"};
+            String[] files = {"grass01", "wall", "water01", "earth", "tree", "road"};
             for(int i = 0; i < files.length; i++) {
                 tiles[i] = new Tile();
                 tiles[i].image = ImageIO.read(Objects.requireNonNull(getClass().
@@ -68,14 +68,33 @@ public class TileManger {
 
     public void draw(Graphics2D g2) {
         // Implementation to draw tiles on the game panel
-        int xAxis = 0, yAxis = 0;
-        for (int[] x : map) {
-            for (int y : x) {
-                g2.drawImage(tiles[y - 1].image, xAxis, yAxis, Window.tileSize, Window.tileSize, null);
-                xAxis += Window.tileSize;
+        int mapX = 0, mapY = 0, worldX, worldY, screenX, screenY;
+
+        while (mapX < Window.maxWorldCol && mapY < Window.maxWorldRow) {
+            int tileNum = map[mapX][mapY];
+
+            worldX = mapX * Window.tileSize;
+            worldY = mapY * Window.tileSize;
+            screenX = worldX - Window.player.world_Xpos + Window.player.SCREEN_X;
+            screenY = worldY - Window.player.world_Ypos + Window.player.SCREEN_Y;
+
+            if(worldX > Window.player.world_Xpos - Window.player.SCREEN_X - Window.tileSize &&
+                    worldX < Window.player.world_Xpos + Window.player.SCREEN_X + Window.tileSize &&
+                    worldY > Window.player.world_Ypos - Window.player.SCREEN_Y - Window.tileSize &&
+                    worldY < Window.player.world_Ypos + Window.player.SCREEN_Y + Window.tileSize
+            ){
+                g2.drawImage(tiles[tileNum].image,
+                        screenX, screenY,
+                        Window.tileSize, Window.tileSize, null);
             }
-            yAxis += Window.tileSize;
-            xAxis = 0;
+
+
+
+            mapX++;
+            if (mapX == Window.maxWorldCol) {
+                mapX = 0;
+                mapY++;
+            }
         }
 
     }

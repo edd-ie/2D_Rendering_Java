@@ -11,16 +11,25 @@ import java.util.Objects;
 
 public class Player extends Character{
     public EventListener keys;
+    public final int SCREEN_X, SCREEN_Y;
 
-    public Player(EventListener keyHandler) {
+    /**
+     * Constructor for Player
+     * @param keyHandler event listener for keyboard input
+     * @param worldX x position in the world map
+     * @param worldY y position in the world map
+     */
+    public Player(EventListener keyHandler, int worldX, int worldY) {
         keys = keyHandler;
-        this.init(100,100, 4);
+        this.init(worldX, worldY, 4);
+        SCREEN_X = Window.dimensions[0]/2 - Window.tileSize/2; // Player x-position on the camera
+        SCREEN_Y = Window.dimensions[1]/2 - Window.tileSize/2; // Player y-position on the camera
         getPlayerImage();
     }
 
     public void init(int x, int y, int speed){
-        xPos = x;
-        yPos = y;
+        world_Xpos = x;
+        world_Ypos = y;
         this.speed = speed;
         direction = "down";
     }
@@ -45,20 +54,20 @@ public class Player extends Character{
 
     public void update(){
         if(keys.right|| keys.down || keys.left || keys.up){
-            if(keys.up && yPos > speed) {
-                yPos -= speed;
+            if(keys.up && world_Ypos > speed) {
+                world_Ypos -= speed;
                 direction = "up";
             }
-            else if(keys.down && yPos < (main.Window.dimensions[1] - Window.tileSize - speed)) {
-                yPos += speed;
+            else if(keys.down) {
+                world_Ypos += speed;
                 direction = "down";
             }
-            else if(keys.left && xPos > speed) {
-                xPos -= speed;
+            else if(keys.left) {
+                world_Xpos -= speed;
                 direction = "left";
             }
-            else if(keys.right && xPos < (main.Window.dimensions[0] - main.Window.tileSize - speed)) {
-                xPos += speed;
+            else if(keys.right) {
+                world_Xpos += speed;
                 direction = "right";
             }
 
@@ -103,6 +112,7 @@ public class Player extends Character{
             }
         }
 
-        g2d.drawImage(image, xPos, yPos, main.Window.tileSize, main.Window.tileSize, null);
+        g2d.drawImage(image, SCREEN_X, SCREEN_Y,
+                main.Window.tileSize, main.Window.tileSize, null);
     }
 }

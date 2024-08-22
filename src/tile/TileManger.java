@@ -12,10 +12,13 @@ import java.util.Scanner;
 
 public class TileManger {
     public Tile[] tiles;
+    public int[][] map;
 
     public TileManger() {
         tiles = new Tile[10];
+        map = new int[Window.aspectRatio[1]][Window.aspectRatio[0]];
         getTileImage();
+        loadTileMap("test.txt");
     }
 
     private void getTileImage() {
@@ -33,11 +36,11 @@ public class TileManger {
         }
     }
 
-    public void draw(Graphics2D g2) {
-        // Implementation to draw tiles on the game panel
+    public void loadTileMap(String fileName) {
+        // Implementation to load tile map from a file
         Scanner sc = null, token = null;
         try{
-            sc = new Scanner(new File("res/Map/test.txt"));
+            sc = new Scanner(new File("res/Map/"+fileName));
 
             int x=0,  y=0;
             while (sc.hasNext()){
@@ -45,12 +48,13 @@ public class TileManger {
                 token = new Scanner(line);
                 token.useDelimiter(" ");
                 while (token.hasNext()){
-                    int num = token.nextInt();
-                    g2.drawImage(tiles[num-1].image, x, y, Window.tileSize, Window.tileSize, null);
-                    x+=Window.tileSize;
+                    map[x][y] = token.nextInt();
+                    y++;
+                    if (y >= map[0].length) break;
                 }
-                y+=Window.tileSize;
-                x=0;
+                y=0;
+                x++;
+                if (x >= map.length) break;
             }
         }
         catch (FileNotFoundException e){
@@ -60,10 +64,19 @@ public class TileManger {
             if (sc != null) sc.close();
             if (token != null) token.close();
         }
-//
-//        g2.drawImage(tiles[0].image, 0, 0, Window.tileSize, Window.tileSize, null);
-//        g2.drawImage(tiles[1].image, Window.tileSize, 0, Window.tileSize, Window.tileSize, null);
-//        g2.drawImage(tiles[2].image, Window.tileSize * 2, 0, Window.tileSize, Window.tileSize, null);
     }
 
+    public void draw(Graphics2D g2) {
+        // Implementation to draw tiles on the game panel
+        int xAxis = 0, yAxis = 0;
+        for (int[] x : map) {
+            for (int y : x) {
+                g2.drawImage(tiles[y - 1].image, xAxis, yAxis, Window.tileSize, Window.tileSize, null);
+                xAxis += Window.tileSize;
+            }
+            yAxis += Window.tileSize;
+            xAxis = 0;
+        }
+
+    }
 }

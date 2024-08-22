@@ -28,7 +28,7 @@ public class TileManger {
             for(int i = 0; i < files.length; i++) {
                 tiles[i] = new Tile();
                 tiles[i].image = ImageIO.read(Objects.requireNonNull(getClass().
-                            getResourceAsStream("/tiles/" + files[i] + ".png")));
+                        getResourceAsStream("/tiles/" + files[i] + ".png")));
             }
         }
         catch (IOException e){

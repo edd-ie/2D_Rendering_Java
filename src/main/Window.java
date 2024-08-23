@@ -51,7 +51,11 @@ public class Window extends JPanel implements Runnable{
         aspectRatio[1] = y;
     }
 
-
+    /**
+     * Starts the game.
+     * Creates a new thread and starts the game loop.
+     * @see Thread#start()
+     */
     public void startGame() {
         gameThread = new Thread(this);
         gameThread.start();
@@ -81,23 +85,30 @@ public class Window extends JPanel implements Runnable{
                 repaint();
                 countdown = 0;
 
-//                fpsCounter++;
+                fpsCounter++;
             }
 
-//            if(timer >= 1000000000) { // Display fps
-//                System.out.println("FPS: " + fpsCounter);
-//                fpsCounter = 0;
-//                timer  = 0;
-//            }
+            if(timer >= 1000000000) { // Display fps
+                System.out.println("FPS: " + fpsCounter);
+                fpsCounter = 0;
+                timer  = 0;
+            }
 
         }
     }
 
-    // Update screen with new frames
+    /**
+     * Updates the game state.
+     */
     public void update() {
         player.update();
     }
 
+    /**
+     * Paints the game on the screen.
+     * @see JPanel#paintComponent(Graphics)
+     * @param fx the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics fx) {
         super.paintComponent(fx);
         // Using graphics2D library to draw on the screen

@@ -32,6 +32,7 @@ public class Player extends Character{
         world_Ypos = y;
         this.speed = speed;
         direction = "down";
+        collisionBox = new Rectangle(8, 16, 32, 32);
     }
 
     public void getPlayerImage(){
@@ -55,21 +56,31 @@ public class Player extends Character{
     public void update(){
         if(keys.right|| keys.down || keys.left || keys.up){
             if(keys.up && world_Ypos > speed) {
-                world_Ypos -= speed;
                 direction = "up";
             }
             else if(keys.down) {
-                world_Ypos += speed;
                 direction = "down";
             }
             else if(keys.left) {
-                world_Xpos -= speed;
                 direction = "left";
             }
             else if(keys.right) {
-                world_Xpos += speed;
                 direction = "right";
             }
+
+            //Checking world tile collisions
+            collisionOn = false;
+            Window.collision.checkCollision( this);
+
+            if(!collisionOn){
+                switch (direction) {
+                    case "up" -> world_Ypos -= speed;
+                    case "down" -> world_Ypos += speed;
+                    case "left" -> world_Xpos -= speed;
+                    case "right" -> world_Xpos += speed;
+                }
+            }
+
 
             spriteCounter++;
             if(spriteCounter > 12){ //changes player image every 12 fps

@@ -29,6 +29,9 @@ public class TileManger {
                 tiles[i] = new Tile();
                 tiles[i].image = ImageIO.read(Objects.requireNonNull(getClass().
                         getResourceAsStream("/tiles/" + files[i] + ".png")));
+                if(files[i].equals("tree") || files[i].equals("wall") ||
+                        files[i].equals("water01"))
+                    tiles[i].collision = true;
             }
         }
         catch (IOException e){

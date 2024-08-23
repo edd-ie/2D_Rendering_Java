@@ -23,12 +23,13 @@ public class Window extends JPanel implements Runnable{
 
     //Event listener
     public EventListener event = new EventListener();
+    public static Collisions collision = new Collisions();
 
     // Characters
     public static Player player;
 
     // World settings
-    public TileManger tileManger = new TileManger();
+    public static TileManger tileManger = new TileManger();
     public static final int maxWorldCol = 50,
             maxWorldRow = 50;
     public static final int worldWidth = tileSize * maxWorldCol,

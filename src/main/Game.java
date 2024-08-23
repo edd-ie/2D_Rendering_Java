@@ -7,7 +7,7 @@ public class Game extends JFrame {
     public static Window panel = new Window();
 
     public Game(){
-        this.setTitle("RayCasting 2D");
+        this.setTitle("2D Rendering");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.add(panel);
